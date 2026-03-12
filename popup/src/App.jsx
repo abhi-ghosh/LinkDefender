@@ -1,6 +1,49 @@
-import {Shield,Heart} from 'lucide-react'
+import { useState } from 'react'
+import {Shield,Heart,Skull, CircleCheck} from 'lucide-react'
+import Idle from './components/Idle'
+import Loading from './components/Loading'
+import Result from './components/Result'
 export default function App() {
-
+  const [state, setState] = useState('safe')
+  const states = {
+  IDLE: "idle",
+  LOADING: "loading",
+  SAFE: "safe",
+  DANGER: "danger",
+};
+let content;
+switch (state) {
+  case states.IDLE:
+    content = <Idle states={states} setState={setState}/>;
+    break;
+  case states.LOADING:
+    content = <Loading/>;
+    break;
+  case states.SAFE:
+    content = <Result
+      textColor="text-green-600"
+      borderColor="border-green-600"
+      icon={CircleCheck}
+      color = "text-green-600"
+      verdict="Safe"
+      message="This link is safe to click!"
+      setState={setState}
+    />;
+    break;
+  case states.DANGER:
+    content = <Result
+      textColor="text-red-600"
+      borderColor="border-red-600"
+      color = "text-red-600"
+      icon={Skull}
+      verdict="Danger"
+      message="This link is dangerous!"
+      setState={setState}
+    />;
+    break;
+  default:
+    content = <Idle />;
+}
   return (
     <div className="font-sans bg-[#151c29] text-white w-96 rounded-2xl">
       <header className="p-5 border-b border-slate-700 flex items-center gap-3">
@@ -13,30 +56,12 @@ export default function App() {
           </div>
       </header>
       <main className='p-5'>
-        <form>
-          <label htmlFor="url" className=' text-blue-500
-            font-bold uppercase block text-[12px] mb-1'
-          >
-            Scanned Link
-          </label>
-          <input type="text" id="url" name="url"
-            placeholder='paste link here'
-            className='text-sm w-full p-3 rounded-md
-            bg-slate-800 text-white focus:outline-none
-            focus:ring-1 focus:ring-blue-500 placeholder:text-gray-500
-            hover:ring-1 hover:ring-gray-500 transition-all duration-200'
-          />
-          <button type="submit" className='w-full mt-4 bg-blue-500 text-white p-3 rounded-md
-            hover:bg-blue-600 transition-colors duration-200 cursor-pointer 
-          '>
-            Scan Link
-          </button>
-        </form>
+        {content}
       </main>
-      <nav className='p-5 border-t border-slate-700 text-sm text-gray-500 text-center flex items-center justify-center gap-2'>
+      <footer className='p-5 border-t border-slate-700 text-sm text-gray-500 text-center flex items-center justify-center gap-2'>
         <p>Stay safe online my friend</p>
         <Heart className='inline w-4 h-4 text-blue-500' />
-      </nav>
+      </footer>
     </div>
   )
 }
