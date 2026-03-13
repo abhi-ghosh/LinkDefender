@@ -7,7 +7,7 @@ export default function Idle({setState, states}) {
       <label htmlFor="url" className=' text-blue-500
         font-bold uppercase block text-[12px] mb-1'
       >
-        Scanned Link
+        link to scan
       </label>
       <input type="text" id="url" name="url"
         placeholder='paste link here'

@@ -1,15 +1,17 @@
 import { useState } from 'react'
-import {Shield,Heart,Skull, CircleCheck} from 'lucide-react'
+import {Shield,Heart,Skull,CircleCheck} from 'lucide-react'
 import Idle from './components/Idle'
 import Loading from './components/Loading'
 import Result from './components/Result'
+import Error from './components/Error'
 export default function App() {
-  const [state, setState] = useState('safe')
+  const [state, setState] = useState('error')
   const states = {
   IDLE: "idle",
   LOADING: "loading",
   SAFE: "safe",
   DANGER: "danger",
+  ERROR: "error"
 };
 let content;
 switch (state) {
@@ -18,6 +20,9 @@ switch (state) {
     break;
   case states.LOADING:
     content = <Loading/>;
+    break;
+  case states.ERROR:
+    content = <Error setState={setState}/>;
     break;
   case states.SAFE:
     content = <Result
