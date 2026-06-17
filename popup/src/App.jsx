@@ -3,16 +3,10 @@ import {Shield,Heart,Skull,CircleCheck} from 'lucide-react'
 import Idle from './components/Idle'
 import Loading from './components/Loading'
 import Result from './components/Result'
-import Error from './components/Error'
+import Error from './components/Error' 
+import {states} from './components/States'
 export default function App() {
-  const [state, setState] = useState('error')
-  const states = {
-  IDLE: "idle",
-  LOADING: "loading",
-  SAFE: "safe",
-  DANGER: "danger",
-  ERROR: "error"
-};
+  const [state, setState] = useState(states.IDLE);
 let content;
 switch (state) {
   case states.IDLE:
@@ -22,7 +16,7 @@ switch (state) {
     content = <Loading/>;
     break;
   case states.ERROR:
-    content = <Error setState={setState}/>;
+    content = <Error states={states} setState={setState}/>;
     break;
   case states.SAFE:
     content = <Result
@@ -32,6 +26,7 @@ switch (state) {
       color = "text-green-600"
       verdict="Safe"
       message="This link is safe to click!"
+      states={states}
       setState={setState}
     />;
     break;
@@ -43,11 +38,12 @@ switch (state) {
       icon={Skull}
       verdict="Danger"
       message="This link is dangerous!"
+      states={states}
       setState={setState}
     />;
     break;
   default:
-    content = <Idle />;
+    content = <Idle states={states} setState={setState}/>;
 }
   return (
     <div className="font-sans bg-[#151c29] text-white w-96 rounded-2xl">

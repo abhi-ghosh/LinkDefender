@@ -1,7 +1,7 @@
 import { Frown } from "lucide-react"
 export default function Error({setState}) {
   return (
-   <div className="flex flex-col items-center">
+<div className="flex flex-col items-center">
     <Frown className="w-16 h-16 text-blue-500"/>
     <p className="text-gray-400 text-md mt-2">Sorry, something went wrong.</p>
     <button onClick={() => setState('idle')}
@@ -14,5 +14,4 @@ export default function Error({setState}) {
   </div>
 
   )
-
 }
