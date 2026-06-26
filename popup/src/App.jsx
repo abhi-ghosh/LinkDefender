@@ -6,11 +6,12 @@ import Result from './components/Result'
 import Error from './components/Error' 
 import {states} from './components/States'
 export default function App() {
+  const [url, setUrl] = useState('');
   const [state, setState] = useState(states.IDLE);
 let content;
 switch (state) {
   case states.IDLE:
-    content = <Idle states={states} setState={setState}/>;
+    content = <Idle states={states} setUrl={setUrl} url={url} setState={setState}/>;
     break;
   case states.LOADING:
     content = <Loading/>;
