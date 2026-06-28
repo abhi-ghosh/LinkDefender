@@ -16,6 +16,10 @@ export default function Idle({setState, states, setUrl, url}) {
     e.preventDefault();
     if (!urlIsValid) return;
     setState(states.LOADING);
+    const nextState = Math.random()<0.5? states.SAFE : states.DANGER;
+    setTimeout(()=>{
+      setState(nextState);
+    },2000);
 };
   return (
     <form onSubmit={handleSubmit} className='relative'>
