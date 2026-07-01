@@ -107,12 +107,11 @@ link-defender/
 
 * [x] UI design system
 * [x] Extension scaffold
-* [ ] Hover warning system
-* [ ] URL expansion
-* [ ] Threat intelligence integration
-* [ ] Scan history
+* [ ] UI improvements
+* [ ] VirusTotal API integration
+* [ ] Manual URL scanning
+* [ ] Hover-to-scan webpage links
 * [ ] Motion animations
-* [ ] Chrome Web Store release
 
 ---
 
