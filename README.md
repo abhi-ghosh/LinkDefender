@@ -107,9 +107,9 @@ link-defender/
 
 * [x] UI design system
 * [x] Extension scaffold
-* [ ] UI improvements
-* [ ] VirusTotal API integration
-* [ ] Manual URL scanning
+* [x] UI improvements
+* [x] VirusTotal API integration
+* [x] Manual URL scanning
 * [ ] Hover-to-scan webpage links
 * [ ] Motion animations
 
