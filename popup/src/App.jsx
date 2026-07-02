@@ -3,15 +3,20 @@ import {Shield,Heart,Skull,CircleCheck} from 'lucide-react'
 import Idle from './components/Idle'
 import Loading from './components/Loading'
 import Result from './components/Result'
-import Error from './components/Error' 
+import Error from './components/Error'
 import {states} from './components/States'
+import {checkURL} from './services/Virustotal'
 export default function App() {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
   const [url, setUrl] = useState('');
+  console.log(data);
+  console.log(error);
   const [state, setState] = useState(states.IDLE);
 let content;
 switch (state) {
   case states.IDLE:
-    content = <Idle states={states} setUrl={setUrl} url={url} setState={setState}/>;
+    content = <Idle states={states} setError={setError} setData={setData} setUrl={setUrl} checkURL={checkURL} url={url} setState={setState}/>;
     break;
   case states.LOADING:
     content = <Loading/>;
@@ -44,7 +49,7 @@ switch (state) {
     />;
     break;
   default:
-    content = <Idle states={states} setState={setState}/>;
+    content = <Idle states={states} setUrl={setUrl} checkURL={checkURL} url={url} setState={setState}/>;
 }
   return (
     <div className="font-sans bg-[#151c29] text-white w-96 rounded-2xl">

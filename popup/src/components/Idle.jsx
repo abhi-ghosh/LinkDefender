@@ -1,4 +1,4 @@
-export default function Idle({setState, states, setUrl, url}) {
+export default function Idle({setState, checkURL, states, setUrl, url, setError, setData}) {
   const urlRegex = /^(https?:\/\/)?([\w-]+(\.[\w-]+)+)([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?$/;
   const cleanUrl = url.trim();
   const checkedUrl = cleanUrl.length < 1 ? '' : cleanUrl.startsWith('http://')||cleanUrl.startsWith('https://')?cleanUrl:`https://${cleanUrl}`;
@@ -16,10 +16,20 @@ export default function Idle({setState, states, setUrl, url}) {
     e.preventDefault();
     if (!urlIsValid) return;
     setState(states.LOADING);
-    const nextState = Math.random()<0.5? states.SAFE : states.DANGER;
-    setTimeout(()=>{
-      setState(nextState);
-    },2000);
+    setError(null);
+    setData(null);
+    const fetchData = async () => {
+      try {
+        const result = await checkURL(checkedUrl);
+        setData(result);
+        console.log(result);
+      } catch (err) {
+        setState(states.ERROR);
+        setError(err);
+        console.error(err);
+      }
+    };
+    fetchData();
 };
   return (
     <form onSubmit={handleSubmit} className='relative'>
