@@ -7,16 +7,16 @@ import Error from './components/Error'
 import {states} from './components/States'
 import {checkURL} from './services/Virustotal'
 export default function App() {
-  const [result, setResult] = useState(null);
+  const [resultObject, setResultObject] = useState(null);
   const [error, setError] = useState(null);
   const [url, setUrl] = useState('');
-  console.log(result);
+  console.log(resultObject);
   console.log(error);
   const [state, setState] = useState(states.IDLE);
 let content;
 switch (state) {
   case states.IDLE:
-    content = <Idle states={states} setError={setError} result={result} setResult={setResult} setUrl={setUrl} checkURL={checkURL} url={url} setState={setState}/>;
+    content = <Idle states={states} setError={setError} resultObject={resultObject} setResultObject={setResultObject} setUrl={setUrl} checkURL={checkURL} url={url} setState={setState}/>;
     break;
   case states.LOADING:
     content = <Loading/>;
@@ -36,6 +36,8 @@ switch (state) {
       setState={setState}
       url={url}
       setUrl={setUrl}
+      resultObject={resultObject}
+      hoverColor="hover:text-green-600"
     />;
     break;
   case states.DANGER:
@@ -50,6 +52,8 @@ switch (state) {
       setState={setState}
       url={url}
       setUrl={setUrl}
+      resultObject={resultObject}
+      hoverColor="hover:text-red-600"
     />;
     break;
   default:
