@@ -60,7 +60,7 @@ switch (state) {
     content = <Idle states={states} setUrl={setUrl} checkURL={checkURL} url={url} setState={setState}/>;
 }
   return (
-    <div className="font-sans bg-[#151c29] text-white w-96 rounded-2xl">
+    <div className="font-sans bg-[#151c29] text-white w-96">
       <header className="p-5 border-b border-slate-700 flex items-center gap-3">
         <Shield className='w-9 h-9 border bg-slate-800 p-2 rounded-xl text-blue-500'/>
         <div>

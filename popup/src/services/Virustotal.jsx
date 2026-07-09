@@ -1,7 +1,7 @@
   const apiKey = import.meta.env.VITE_VIRUSTOTAL_API_KEY;
   const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-  const attempts =10;
-  const delay = 5000; // 5 seconds
+  const attempts =20;
+  const delay = 3000; // 3 seconds
   export const checkURL = async (url) => {
     const options = {
       method: 'POST',

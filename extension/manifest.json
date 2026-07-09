@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "LinkDefender",
+  "version": "1.0.0",
+  "description": "Scan links before you click using VirusTotal.",
+
+  "action": {
+    "default_popup": "popup/index.html",
+    "default_title": "LinkDefender"
+  },
+
+  "host_permissions": [
+    "https://www.virustotal.com/*"
+  ],
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
