@@ -32,7 +32,6 @@ export default function Result({
   return (
     <>
       <div className='mb-5 relative'>
-          <p className='text-sm font-semibold text-gray-400 mb-2'>Redirection Detected!</p>
           <div className={`flex items-center justify-between w-full border ${borderColor} rounded-md p-2 text-sm font-semibold ${textColor}`}>
             {url}
             <div className='group'>
