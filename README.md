@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <img src="./screenshots/linkdefender-demo.gif" alt="LinkDefender Demo">
+  <img src="./screenshots/linkDefenderGif.gif" alt="LinkDefender Demo">
 </p>
 
 ---
@@ -25,7 +25,7 @@ The extension communicates with the **VirusTotal API**, polls for asynchronous a
 
 ## Idle State
 
-<img src="./screenshots/default-state.png" alt="Default State">
+<img src="./screenshots/defaultState.png" alt="Default State">
 
 The popup is ready to accept a URL. Users can paste a link and either press **Enter** or click **Scan Link**.
 
@@ -33,7 +33,7 @@ The popup is ready to accept a URL. Users can paste a link and either press **En
 
 ## Loading
 
-<img src="./screenshots/loading-state.png" alt="Loading State">
+<img src="./screenshots/loadingState.png" alt="Loading State">
 
 While VirusTotal performs analysis, LinkDefender continuously polls for completion and provides visual feedback.
 
@@ -41,7 +41,7 @@ While VirusTotal performs analysis, LinkDefender continuously polls for completi
 
 ## Safe Verdict
 
-<img src="./screenshots/safe-state.png" alt="Safe State">
+<img src="./screenshots/safeState.png" alt="Safe State">
 
 Displays a clear security verdict along with the number of vendors that classified the URL as safe.
 
@@ -49,7 +49,7 @@ Displays a clear security verdict along with the number of vendors that classifi
 
 ## Dangerous Verdict
 
-<img src="./screenshots/danger-state.png" alt="Danger State">
+<img src="./screenshots/dangerState.png" alt="Danger State">
 
 Potentially malicious URLs display a warning together with detailed vendor detections and safety recommendations.
 
@@ -57,7 +57,7 @@ Potentially malicious URLs display a warning together with detailed vendor detec
 
 ## Client-side Validation
 
-<img src="./screenshots/client-side-validation.png" alt="Client Validation">
+<img src="./screenshots/clientSide.png" alt="Client Validation">
 
 Invalid URLs are detected before any API request is sent, reducing unnecessary network calls and improving user experience.
 
@@ -65,7 +65,7 @@ Invalid URLs are detected before any API request is sent, reducing unnecessary n
 
 ## Error Handling
 
-<img src="./screenshots/error-state.png" alt="Error State">
+<img src="./screenshots/errorState.png" alt="Error State">
 
 Graceful fallback UI handles invalid responses, API failures, and timeout scenarios.
 
