@@ -51,6 +51,11 @@ export default function Idle({setState, checkURL, states, setUrl, url, setError,
         hover:ring-1 hover:ring-gray-500 transition-all duration-200'
         value={url}
         onChange={(e) => setUrl(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            handleSubmit(e);
+          }
+        }}
         />
         {showError && (
           <p className='text-red-500 text-sm mt-2'>

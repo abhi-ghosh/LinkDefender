@@ -1,133 +1,273 @@
 # 🛡️ LinkDefender
 
-**Know before you click.**
+<p align="center">
+  <strong>Know before you click.</strong><br>
+  A modern Chrome extension that analyzes URLs using the VirusTotal API, helping users identify potentially malicious links before visiting them.
+</p>
 
-LinkDefender is a modern Chrome extension that helps users identify potentially unsafe or malicious links before opening them. It supports real-time scanning directly from webpages as well as manual URL checks, all presented in a clean, developer-focused dark interface.
-
----
-
-## ✨ Features
-
-* 🔍 Real-time link detection from webpages
-* ✏️ Manual URL scanning via popup input
-* 🔗 Short link expansion (planned)
-* 🟢 Clear safety verdicts (Safe / Dangerous / Scanning)
-* ⚡ Lightweight Manifest V3 architecture
-* 🎨 Modern dark UI built with Tailwind CSS
-* 🧩 Clean state-driven React popup
+<p align="center">
+  <img src="./screenshots/linkdefender-demo.gif" alt="LinkDefender Demo">
+</p>
 
 ---
 
-## 🧱 Tech Stack
+## ✨ Overview
 
-* **React** — popup interface
-* **Tailwind CSS** — styling system
-* **Vite** — fast build tooling
-* **Chrome Extension Manifest V3**
-* **Lucide React** — icon system
-* **Motion** *(planned)* — smooth UI animations
+LinkDefender is a Chrome Extension built with **React**, **Tailwind CSS**, and **Manifest V3** that allows users to scan URLs before opening them.
 
----
+Unlike traditional link checkers, LinkDefender presents security results through a clean, state-driven interface designed to make threat information easy to understand.
 
-## 🧠 How It Works
-
-LinkDefender operates through three core parts:
-
-* **Content Script** → detects links on webpages
-* **Background Service Worker** → handles scanning logic
-* **React Popup** → displays results and accepts manual input
-
-This architecture keeps the extension fast, modular, and scalable.
+The extension communicates with the **VirusTotal API**, polls for asynchronous analysis, and aggregates security vendor verdicts into a simple **Safe** or **Dangerous** recommendation.
 
 ---
 
-## 🖼️ UI States
+# 📸 Screenshots
 
-The popup supports multiple states:
+## Idle State
 
-* Idle (manual input)
-* Scanning
-* Safe result
-* Dangerous result
+<img src="./screenshots/default-state.png" alt="Default State">
+
+The popup is ready to accept a URL. Users can paste a link and either press **Enter** or click **Scan Link**.
 
 ---
 
-## 🚀 Getting Started
+## Loading
 
-### 1️⃣ Clone the repository
+<img src="./screenshots/loading-state.png" alt="Loading State">
+
+While VirusTotal performs analysis, LinkDefender continuously polls for completion and provides visual feedback.
+
+---
+
+## Safe Verdict
+
+<img src="./screenshots/safe-state.png" alt="Safe State">
+
+Displays a clear security verdict along with the number of vendors that classified the URL as safe.
+
+---
+
+## Dangerous Verdict
+
+<img src="./screenshots/danger-state.png" alt="Danger State">
+
+Potentially malicious URLs display a warning together with detailed vendor detections and safety recommendations.
+
+---
+
+## Client-side Validation
+
+<img src="./screenshots/client-side-validation.png" alt="Client Validation">
+
+Invalid URLs are detected before any API request is sent, reducing unnecessary network calls and improving user experience.
+
+---
+
+## Error Handling
+
+<img src="./screenshots/error-state.png" alt="Error State">
+
+Graceful fallback UI handles invalid responses, API failures, and timeout scenarios.
+
+---
+
+# 🚀 Features
+
+- 🛡️ Scan URLs using the VirusTotal API
+- ⚡ Manual URL scanning from the popup
+- ⌨️ Press **Enter** to instantly start scanning
+- ✅ Clear Safe / Dangerous verdicts
+- 📊 Vendor-by-vendor security analysis
+- 🔄 Automatic polling while analysis is in progress
+- 🚫 Client-side URL validation
+- 🎨 Modern dark interface built with Tailwind CSS
+- ⚛️ State-driven React architecture
+- 🧩 Chrome Extension built using Manifest V3
+
+---
+
+# 🏗 Architecture
+
+```
+             User
+               │
+               ▼
+        React Popup (UI)
+               │
+               ▼
+      VirusTotal API Request
+               │
+               ▼
+      Poll Until Complete
+               │
+               ▼
+      Parse Analysis Results
+               │
+               ▼
+     Safe / Danger / Error UI
+```
+
+The project follows a component-driven architecture where each application state is isolated into its own React component, keeping the codebase predictable and easy to extend.
+
+---
+
+# 🧱 Tech Stack
+
+| Technology                   | Purpose                        |
+| ---------------------------- | ------------------------------ |
+| React                        | Popup interface                |
+| Tailwind CSS                 | UI styling                     |
+| Vite                         | Build tooling                  |
+| Chrome Extension Manifest V3 | Browser extension architecture |
+| VirusTotal API               | Threat intelligence            |
+| Lucide React                 | Icons                          |
+
+---
+
+# ⚙️ Installation
+
+## Clone the repository
 
 ```bash
-git clone https://github.com/your-username/link-defender.git
-cd link-defender
+git clone https://github.com/yourusername/LinkDefender.git
+```
+
+```bash
+cd LinkDefender/popup
 ```
 
 ---
 
-### 2️⃣ Install popup dependencies
+## Install dependencies
 
 ```bash
-cd popup
 npm install
 ```
 
 ---
 
-### 3️⃣ Build the popup
+## Configure Environment Variables
+
+Copy the example environment file.
+
+```bash
+cp .env.example .env
+```
+
+Open `.env` and replace the placeholder value with your own VirusTotal API key.
+
+```env
+VITE_VIRUSTOTAL_API_KEY=your_api_key_here
+```
+
+> **Important**
+>
+> LinkDefender does **not** include a VirusTotal API key.
+>
+> Obtain your own free API key from VirusTotal and keep it private.
+>
+> Never commit your `.env` file to GitHub.
+
+---
+
+## Build the popup
 
 ```bash
 npm run build
 ```
 
-This outputs the compiled files used by the extension.
+This outputs the production files used by the Chrome extension.
 
 ---
 
-### 4️⃣ Load the extension in Chrome
+## Load the extension
 
 1. Open `chrome://extensions`
-2. Enable **Developer mode**
+2. Enable **Developer Mode**
 3. Click **Load unpacked**
-4. Select the `/extension` folder
+4. Select the `extension` folder
 
 ---
 
-## 📁 Project Structure
+# 📁 Project Structure
 
 ```
-link-defender/
-├─ extension/        # Manifest, background, content scripts
-├─ popup/            # React + Tailwind UI
-├─ screenshots/      # UI previews (add later)
-└─ README.md
+LinkDefender
+│
+├── extension/
+│   ├── manifest.json
+│   ├── icons/
+│   ├── background.js
+│   ├── content.js
+│   └── popup/
+│
+├── popup/
+│   ├── src/
+│   ├── services/
+│   ├── components/
+│   ├── public/
+│   ├── dist/
+│   ├── .env.example
+│   └── ...
+│
+├── screenshots/
+│
+└── README.md
 ```
 
 ---
 
-## 🗺️ Roadmap
+# 🧠 Engineering Highlights
 
-* [x] UI design system
-* [x] Extension scaffold
-* [x] UI improvements
-* [x] VirusTotal API integration
-* [x] Manual URL scanning
-* [ ] Hover-to-scan webpage links
-* [ ] Motion animations
+Building LinkDefender introduced me to several concepts beyond traditional React applications:
 
----
-
-## ⚠️ Disclaimer
-
-LinkDefender provides heuristic safety checks and does not guarantee that a link is completely safe. Always exercise caution when opening unknown URLs.
+- Building Chrome Extensions with Manifest V3
+- Integrating third-party REST APIs
+- Implementing asynchronous polling workflows
+- Designing state-driven React interfaces
+- Managing API credentials securely using environment variables
+- Performing client-side URL validation before network requests
+- Building production-ready React applications with Vite
 
 ---
 
-## 📄 License
+# 🛣 Roadmap
+
+## Completed
+
+- ✅ React popup UI
+- ✅ Manifest V3 integration
+- ✅ VirusTotal API integration
+- ✅ Asynchronous polling
+- ✅ Client-side validation
+- ✅ Safe & Dangerous verdicts
+- ✅ Error handling
+- ✅ Keyboard shortcut (Enter to scan)
+
+## Planned
+
+- ⏳ Scan links directly from webpages
+- ⏳ Hover-to-scan functionality
+- ⏳ Short URL expansion
+- ⏳ Scan history
+- ⏳ Framer Motion animations
+
+---
+
+# ⚠️ Disclaimer
+
+LinkDefender uses VirusTotal as a threat intelligence source.
+
+A "Safe" verdict should not be interpreted as an absolute guarantee that a URL is harmless. Always exercise caution when visiting unfamiliar websites.
+
+---
+
+# 📄 License
 
 MIT License
 
 ---
 
-## 👤 Author
-
-Built by **Abhi** — aspiring front-end developer focused on clean UI, practical tools, and modern web experiences.
-
+<p align="center">
+Built with ❤️ by <strong>Abhijit Ghosh</strong>
+</p>

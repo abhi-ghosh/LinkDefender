@@ -42,7 +42,7 @@ export default function Result({
               >
                 <SquareArrowOutUpRight className={`text-white w-5 h-5 cursor-pointer ${hoverColor} transition duration-300`} />
               </a>
-              <span class="text-white absolute right-0 top-0 px-2 py-1 rounded animate-bounce opacity-0 transition-opacity
+              <span class="text-white absolute right-0 -top-5 px-2 py-1 rounded animate-bounce opacity-0 transition-opacity
                     duration-300 ease-in-out group-hover:opacity-100">{verdict==='Safe'?'✅ Go to link':'⚠️ Proceed anyway?'}
               </span>
             </div>
