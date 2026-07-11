@@ -1,9 +1,8 @@
 # 🛡️ LinkDefender
 
-<p align="center">
-  <strong>Know before you click.</strong><br>
-  A modern Chrome extension that analyzes URLs using the VirusTotal API, helping users identify potentially malicious links before visiting them.
-</p>
+## Know before you click.
+
+### A modern Chrome extension that analyzes URLs using the VirusTotal API, helping users identify potentially malicious links before visiting them.
 
 <p align="center">
   <img src="./screenshots/linkDefenderGif.gif" alt="LinkDefender Demo">
